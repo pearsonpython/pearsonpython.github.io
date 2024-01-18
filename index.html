@@ -270,27 +270,45 @@
             if (!isstart) return
             if (dir === 'ArrowDown') return
             dir = 'ArrowUp'
+            up.style.color = 'red'
+            down.style.color = 'red'
+            left.style.color = 'white'
+            right.style.color = 'white'
         })
 
         down.addEventListener('click', () => {
             if (!isstart) return
             if (dir === 'ArrowUp') return
             dir = 'ArrowDown'
+            up.style.color = 'red'
+            down.style.color = 'red'
+            left.style.color = 'white'
+            right.style.color = 'white'
         })
 
         left.addEventListener('click', () => {
             if (!isstart) return
             if (dir === 'ArrowRight') return
             dir = 'ArrowLeft'
+            up.style.color = 'white'
+            down.style.color = 'white'
+            left.style.color = 'red'
+            right.style.color = 'red'
         })
 
         right.addEventListener('click', () => {
             if (!isstart) return
             if (dir === 'ArrowLeft') return
             dir = 'ArrowRight'
+            up.style.color = 'white'
+            down.style.color = 'white'
+            left.style.color = 'red'
+            right.style.color = 'red'
         })
 
         
+
+
 
 
         document.addEventListener('keydown', (e) => {
