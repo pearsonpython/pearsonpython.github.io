@@ -310,13 +310,6 @@
             let y = Math.floor(Math.random() * 30) * 10
             food.style.left = x + 'px'
             food.style.top = y + 'px'
-            while (allitemsArr.some(item => item.offsetLeft === x && item.offsetTop === y)) {
-                let x = Math.floor(Math.random() * 30) * 10
-                let y = Math.floor(Math.random() * 30) * 10
-                food.style.left = x + 'px'
-                food.style.top = y + 'px'
-            }
-            allitemsArr.push(food)
         }
 
 
@@ -326,13 +319,6 @@
                 let y = Math.floor(Math.random() * 30) * 10
                 mines[i].style.left = x + 'px'
                 mines[i].style.top = y + 'px'
-                while (allitemsArr.some(item => item.offsetLeft === x && item.offsetTop === y)) {
-                    let x = Math.floor(Math.random() * 30) * 10
-                    let y = Math.floor(Math.random() * 30) * 10
-                    mines[i].style.left = x + 'px'
-                    mines[i].style.top = y + 'px'
-                }
-                allitemsArr.push(mines[i])
             }
         }
 
