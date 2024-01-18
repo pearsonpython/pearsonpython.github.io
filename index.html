@@ -14,7 +14,7 @@
 
         .outer {
             width: 360px;
-            height: 420px;
+            height: 520px;
             margin: 20px auto 0 auto;
             background-color: aquamarine;
             border: 10px solid #000;
@@ -35,7 +35,7 @@
 
         .info {
             width: 304px;
-            height: 100px;
+            height: 50px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -43,8 +43,7 @@
             font: bold 20px Courier;
 
         }
-
-        button,
+        .info button,
         .score,
         .level {
             display: inline;
@@ -137,6 +136,62 @@
         .level-flash {
             animation: flash 1s;
         }
+        
+        .direction {
+            width: 300px;
+            height: 100px;
+            margin: 0px auto;
+            font: bold 20px Courier;
+            position: relative;
+        }
+
+        .direction button {
+           height: 40px;
+            width: 70px;
+            background-color: #000;
+            color: #fff;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            font: bold 40px Courier;
+
+        }
+
+        .direction button:hover {
+            background-color: #636363;
+            cursor: pointer;
+            outline: #000 2px solid;
+        }
+
+        .direction button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .direction button.up {
+            position: absolute;
+            left: 115px;
+            top: 0;
+        }
+
+        .direction button.down {
+            position: absolute;
+            left: 115px;
+            top: 70px;
+        }
+
+        .direction button.left {
+            position: absolute;
+            left: 0;
+            top: 35px;
+        }
+        
+        .direction button.right {
+            position: absolute;
+            left: 230px;
+            top: 35px;
+        }
+
     </style>
 </head>
 
@@ -171,7 +226,14 @@
                 <span>1</span>
             </div>
         </div>
-    </div>
+        <!-- 设置方向键按钮 -->
+        <div class="direction">
+            <button class="up"><i class="fa-solid fa-caret-up"></i></button>
+            <button class="down"><i class="fa-solid fa-caret-down"></i></button>
+            <button class="left"><i class="fa-solid fa-caret-left"></i></button>
+            <button class="right"><i class="fa-solid fa-caret-right"></i></button>
+        </div>
+
     <script>
         const snake = document.querySelector('.snake')
         const snakes = snake.getElementsByTagName('div')
@@ -196,6 +258,41 @@
             'ArrowLeft': 'ArrowRight',
             'ArrowRight': 'ArrowLeft'
         }
+
+        // 方向键按钮事件
+
+        const up = document.querySelector('.up')
+        const down = document.querySelector('.down')
+        const left = document.querySelector('.left')
+        const right = document.querySelector('.right')
+
+        up.addEventListener('click', () => {
+            if (!isstart) return
+            if (dir === 'ArrowDown') return
+            dir = 'ArrowUp'
+        })
+
+        down.addEventListener('click', () => {
+            if (!isstart) return
+            if (dir === 'ArrowUp') return
+            dir = 'ArrowDown'
+        })
+
+        left.addEventListener('click', () => {
+            if (!isstart) return
+            if (dir === 'ArrowRight') return
+            dir = 'ArrowLeft'
+        })
+
+        right.addEventListener('click', () => {
+            if (!isstart) return
+            if (dir === 'ArrowLeft') return
+            dir = 'ArrowRight'
+        })
+
+        
+
+
         document.addEventListener('keydown', (e) => {
             if (!isstart) return
             if (!keyArr.includes(e.key)) return
@@ -207,6 +304,9 @@
             const head = snakes[0]
             let x = head.offsetLeft
             let y = head.offsetTop
+
+            
+
 
             switch (dir) {
 
@@ -351,6 +451,7 @@
             }, 2000);
 
         }
+
 
 
 
